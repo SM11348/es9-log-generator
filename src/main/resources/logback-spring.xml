@@ -1,0 +1,60 @@
+<configuration scan="true">
+    <appender name="ELASTIC" class="com.agido.logback.elasticsearch.ElasticsearchAppender">
+        <!-- REST 엔드포인트 -->
+        <url>http://localhost:9200/_bulk</url>
+        <!-- 일별 롤링 인덱스 -->
+        <index>application-log-%date{yyyyMMdd}</index>
+        <!-- 큐·재시도 관련 -->
+        <maxQueueSize>200000</maxQueueSize>   <!-- 문자 수 기준 버퍼(≈200 KB) -->
+        <sleepTime>250</sleepTime>            <!-- 재시도 back-off(ms) -->
+        <maxRetries>3</maxRetries>
+        <properties>
+            <esProperty>
+                <name>springApplicationName</name>
+                <value>${APP_NAME:-demo-es9}</value>
+            </esProperty>
+            <esProperty>
+                <name>springProfile</name>
+                <value>${SPRING_PROFILE:-local}</value>
+            </esProperty>
+            <esProperty>
+                <name>level</name>
+                <value>%level</value>
+            </esProperty>
+            <esProperty>
+                <name>thread</name>
+                <value>%thread</value>
+            </esProperty>
+            <esProperty>
+                <name>logger</name>
+                <value>%logger</value>
+            </esProperty>
+            <esProperty>
+                <name>stacktrace</name>
+                <value>%ex</value>
+                <allowEmpty>true</allowEmpty>
+            </esProperty>
+        </properties>
+        <headers>
+            <header>
+                <name>Content-Type</name>
+                <value>application/json</value>
+            </header>
+        </headers>
+    </appender>
+
+    <appender name="ASYNC_ELASTIC" class="ch.qos.logback.classic.AsyncAppender">
+        <queueSize>8192</queueSize>
+        <discardingThreshold>0</discardingThreshold>
+        <neverBlock>true</neverBlock>     <!-- 큐가 꽉 차면 버리고 진행 -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>  <!-- WARN 로그레벨만 전송-->
+        </filter>
+        <appender-ref ref="ELASTIC"/>
+    </appender>
+
+    <root level="debug">
+        <appender-ref ref="ASYNC_ELASTIC"/>
+<!--        <appender-ref ref="STDOUT"/>-->
+    </root>
+</configuration>
