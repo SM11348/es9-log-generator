@@ -26,13 +26,13 @@ public class Es9LogApp implements CommandLineRunner {
     @Scheduled(fixedDelay = 5000L)
     public void generateErrorLog() {
         try {
-            causeError();
+            causeError2();
         } catch (Exception e) {
             log.error("Intentional error for ES logging demo", e);
         }
     }
 
-    private void causeError() {
+    private void causeError2() {
         Object x = null;
         x.toString(); // NPE
     }
