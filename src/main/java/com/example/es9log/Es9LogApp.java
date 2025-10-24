@@ -26,56 +26,14 @@ public class Es9LogApp implements CommandLineRunner {
     @Scheduled(fixedDelay = 5000L)
     public void generateErrorLog() {
         try {
-            causeError2();
+            causeError();
         } catch (Exception e) {
             log.error("Intentional error for ES logging demo", e);
         }
-
-        try {
-            causeError3();
-        } catch (Exception e) {
-            log.error("causeError3", e);
-        }
-
-        try {
-            causeError4();
-        } catch (Exception e) {
-            log.error("causeError4", e);
-        }
-
-        try {
-            causeError5();
-        } catch (Exception e) {
-            log.error("causeError5", e);
-        }
     }
 
-    private void causeError2() {
+    private void causeError() {
         Object x = null;
-// TODO: 당신은 시니어 백엔드 엔지니어입니다.  ── demo-es9 | com.example.es9log.Es9LogApp | ERROR | 2025-10-24T17:21:14.993+0900 | Intentional error for ES logging demo
-        if (x != null) {   // 패치 내용 반영
-            x.toString();
-        }
-    }
-
-
-    private void causeError3() {
-        int a= 5;
-        int b= 0;
-        int c= a / b; // ArithmeticException
-        log.info("causeError3" + c);
-    }
-
-
-    private void causeError4() {
-        int[] arr = new int[1];
-        int x2 = arr[5]; // ArrayIndexOutOfBoundsException
-        log.info("causeError4: " + x2);
-    }
-
-    private void causeError5() {
-        Object s = "hello";
-        Integer i = (Integer) s; // ClassCastException
-        log.info("causeError5: " + i);
+        x.toString(); // NPE
     }
 }
