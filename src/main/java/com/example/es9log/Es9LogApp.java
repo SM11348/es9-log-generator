@@ -35,5 +35,6 @@ public class Es9LogApp implements CommandLineRunner {
     private void causeError2() {
         Object x = null;
         x.toString(); // NPE
+// [auto-fix-proto] demo-es9 | com.example.es9log.Es9LogApp | ERROR | 2025-10-24T09:21:10.526+0900 | Intentional error for ES logging demo
     }
 }
