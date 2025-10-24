@@ -14,7 +14,6 @@ public class Es9LogApp implements CommandLineRunner {
     private static final Logger log = LoggerFactory.getLogger(Es9LogApp.class);
 
     public static void main(String[] args) {
-        log.info("starting ES9 Log Generator...");
         SpringApplication.run(Es9LogApp.class, args);
     }
 
@@ -27,7 +26,6 @@ public class Es9LogApp implements CommandLineRunner {
     @Scheduled(fixedDelay = 5000L)
     public void generateErrorLog() {
         try {
-            log.info("start");
             causeError2();
         } catch (Exception e) {
             log.error("Intentional error for ES logging demo", e);
@@ -38,5 +36,10 @@ public class Es9LogApp implements CommandLineRunner {
         Object x = null;
 // [auto-fix-proto] demo-es9 | com.example.es9log.Es9LogApp | ERROR | 2025-10-24T09:16:20.440+0900 | Intentional error for ES logging demo
         x.toString(); // NPE
+
+        int a = 5;
+
+        a= 0;
+        int b = 10 / a; // ArithmeticException
     }
 }
