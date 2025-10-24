@@ -30,11 +30,30 @@ public class Es9LogApp implements CommandLineRunner {
         } catch (Exception e) {
             log.error("Intentional error for ES logging demo", e);
         }
+
+        try {
+            causeError3();
+        } catch (Exception e) {
+            log.error("Intentional error for ES logging demo", e);
+        }
+
+        try {
+            causeError4();
+        } catch (Exception e) {
+            log.error("Intentional error for ES logging demo", e);
+        }
+
+        try {
+            causeError5();
+        } catch (Exception e) {
+            log.error("Intentional error for ES logging demo", e);
+        }
     }
 
     private void causeError2() {
         Object x = null;
         x.toString(); // NPE
+
 
         int a= 5;
         int b= 0;
@@ -45,5 +64,26 @@ public class Es9LogApp implements CommandLineRunner {
 
         Object s = "hello";
         Integer i = (Integer) s; // ClassCastException
+    }
+
+
+    private void causeError3() {
+        int a= 5;
+        int b= 0;
+        int c= a / b; // ArithmeticException
+        log.info("causeError3" + c);
+    }
+
+
+    private void causeError4() {
+        int[] arr = new int[1];
+        int x2 = arr[5]; // ArrayIndexOutOfBoundsException
+        log.info("causeError4: " + x2);
+    }
+
+    private void causeError5() {
+        Object s = "hello";
+        Integer i = (Integer) s; // ClassCastException
+        log.info("causeError5: " + i);
     }
 }
