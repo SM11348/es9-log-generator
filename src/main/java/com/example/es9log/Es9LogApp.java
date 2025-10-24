@@ -34,6 +34,7 @@ public class Es9LogApp implements CommandLineRunner {
 
     private void causeError2() {
         Object x = null;
+// TODO: 당신은 시니어 백엔드 엔지니어입니다.  ── demo-es9 | com.example.es9log.Es9LogApp | ERROR | 2025-10-24T13:55:06.306+0900 | Intentional error for ES logging demo
         x.toString(); // NPE
 
         int a= 5;
