@@ -39,5 +39,6 @@ public class Es9LogApp implements CommandLineRunner {
         int a= 5;
         int b= 0;
         int c= a / b; // ArithmeticException
+
     }
 }
