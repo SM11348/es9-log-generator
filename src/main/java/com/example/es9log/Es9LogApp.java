@@ -34,19 +34,19 @@ public class Es9LogApp implements CommandLineRunner {
         try {
             causeError3();
         } catch (Exception e) {
-            log.error("Intentional error for ES logging demo", e);
+            log.error("causeError3", e);
         }
 
         try {
             causeError4();
         } catch (Exception e) {
-            log.error("Intentional error for ES logging demo", e);
+            log.error("causeError4", e);
         }
 
         try {
             causeError5();
         } catch (Exception e) {
-            log.error("Intentional error for ES logging demo", e);
+            log.error("causeError5", e);
         }
     }
 
