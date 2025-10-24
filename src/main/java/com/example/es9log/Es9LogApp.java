@@ -41,7 +41,7 @@ public class Es9LogApp implements CommandLineRunner {
         int c= a / b; // ArithmeticException
 
         int[] arr = new int[1];
-        int x = arr[5]; // ArrayIndexOutOfBoundsException
+        int x2 = arr[5]; // ArrayIndexOutOfBoundsException
 
         Object s = "hello";
         Integer i = (Integer) s; // ClassCastException
