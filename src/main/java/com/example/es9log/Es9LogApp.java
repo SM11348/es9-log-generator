@@ -34,6 +34,10 @@ public class Es9LogApp implements CommandLineRunner {
 
     private void causeError2() {
         Object x = null;
-        x.toString(); // NPE
+        if (x != null) {
+            x.toString();
+        } else {
+            log.debug("Object x is null, skipping toString() call");
+        }
     }
 }
