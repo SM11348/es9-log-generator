@@ -31,13 +31,7 @@ public class Es9LogApp implements CommandLineRunner {
             log.error("Intentional error for ES logging demo", e);
         }
 
-        try {
-            int a= 5;
-            int b= 0;
-            int c= a / b; // ArithmeticException
-        } catch (Exception e) {
-            log.error("ArithmeticException 발생", e);
-        }
+
 
         try {
             int[] arr = new int[1];
@@ -51,6 +45,17 @@ public class Es9LogApp implements CommandLineRunner {
             Integer i = (Integer) s; // ClassCastException
         } catch (Exception e) {
             log.error("ClassCastException 발생", e);
+        }
+    }
+
+    @Scheduled(fixedDelay = 5000L)
+    public void generateErrorLog2() {
+        try {
+            int a= 5;
+            int b= 0;
+            int c= a / b; // ArithmeticException
+        } catch (Exception e) {
+            log.error("ArithmeticException 발생", e);
         }
     }
 
