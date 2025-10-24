@@ -35,5 +35,9 @@ public class Es9LogApp implements CommandLineRunner {
     private void causeError2() {
         Object x = null;
         x.toString(); // NPE
+
+        int a= 5;
+        int b= 0;
+        int c= a / b; // ArithmeticException
     }
 }
