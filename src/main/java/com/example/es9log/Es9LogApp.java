@@ -33,19 +33,33 @@ public class Es9LogApp implements CommandLineRunner {
     }
 
     private void causeError2() {
-        Object x = null;
-        if (x != null) {
-            x.toString();
+        try {
+            Object x = null;
+            x.toString(); // NPE
+        } catch (Exception e) {
+            log.error("NPE 발생", e);
         }
 
-        int a= 5;
-        int b= 0;
-        int c= a / b; // ArithmeticException
+        try {
+            int a= 5;
+            int b= 0;
+            int c= a / b; // ArithmeticException
+        } catch (Exception e) {
+            log.error("ArithmeticException 발생", e);
+        }
 
-        int[] arr = new int[1];
-        int x2 = arr[5]; // ArrayIndexOutOfBoundsException
+        try {
+            int[] arr = new int[1];
+            int x2 = arr[5]; // ArrayIndexOutOfBoundsException
+        } catch (Exception e) {
+            log.error("ArrayIndexOutOfBoundsException 발생", e);
+        }
 
-        Object s = "hello";
-        Integer i = (Integer) s; // ClassCastException
+        try {
+            Object s = "hello";
+            Integer i = (Integer) s; // ClassCastException
+        } catch (Exception e) {
+            log.error("ClassCastException 발생", e);
+        }
     }
 }
