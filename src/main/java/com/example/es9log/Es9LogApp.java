@@ -52,18 +52,9 @@ public class Es9LogApp implements CommandLineRunner {
 
     private void causeError2() {
         Object x = null;
-        x.toString(); // NPE
-
-
-        int a= 5;
-        int b= 0;
-        int c= a / b; // ArithmeticException
-
-        int[] arr = new int[1];
-        int x2 = arr[5]; // ArrayIndexOutOfBoundsException
-
-        Object s = "hello";
-        Integer i = (Integer) s; // ClassCastException
+        if (x != null) {   // 패치 내용 반영
+            x.toString();
+        }
     }
 
 
