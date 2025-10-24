@@ -33,7 +33,7 @@ public class Es9LogApp implements CommandLineRunner {
     }
 
     private void causeError2() {
-        Object x = null;
+        Object x = new Object();
         x.toString(); // NPE
 
         int a= 5;
