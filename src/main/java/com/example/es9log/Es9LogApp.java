@@ -30,15 +30,6 @@ public class Es9LogApp implements CommandLineRunner {
         } catch (Exception e) {
             log.error("Intentional error for ES logging demo", e);
         }
-    }
-
-    private void causeError2() {
-        try {
-            Object x = null;
-            x.toString(); // NPE
-        } catch (Exception e) {
-            log.error("NPE 발생", e);
-        }
 
         try {
             int a= 5;
@@ -60,6 +51,15 @@ public class Es9LogApp implements CommandLineRunner {
             Integer i = (Integer) s; // ClassCastException
         } catch (Exception e) {
             log.error("ClassCastException 발생", e);
+        }
+    }
+
+    private void causeError2() {
+        try {
+            Object x = null;
+            x.toString(); // NPE
+        } catch (Exception e) {
+            log.error("NPE 발생", e);
         }
     }
 }
